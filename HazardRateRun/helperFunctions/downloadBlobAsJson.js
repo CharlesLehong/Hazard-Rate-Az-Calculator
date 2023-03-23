@@ -15,8 +15,5 @@ module.exports = async function (
     const blobClient = containerClient.getBlobClient(fileName);
     const blob = await blobClient.download();
     const blobBuffer = await convertStreamToBuffer(blob.readableStreamBody);
-    // const jsonData = (
-    //     await convertStreamToBuffer(blob.readableStreamBody)
-    // ).toString();
     return blobBuffer.toString();
 };

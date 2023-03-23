@@ -1,5 +1,5 @@
 require("dotenv").config();
-const downloadJsonAsBlob = require("./helperFunctions/downloadJsonAsBlob");
+const downloadBlobAsJson = require("./helperFunctions/downloadBlobAsJson");
 const createBlobFromText = require("./helperFunctions/createBlobFromText");
 const sendMessageToOutputQueue = require("./helperFunctions/sendMessageToOutputQueue");
 const {
@@ -10,7 +10,7 @@ module.exports = async function (context, queueMessageItem) {
     const accountName = process.env.STORAGE_ACCOUNT_NAME;
     const accountKey = process.env.STORAGE_ACCOUNT_KEY;
 
-    const input = await downloadJsonAsBlob(
+    const input = await downloadBlobAsJson(
         accountName,
         accountKey,
         queueMessageItem.inputContainerName,
