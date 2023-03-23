@@ -1,0 +1,11 @@
+{
+    "bindings": [
+        {
+            "name": "queueMessageItem",
+            "type": "queueTrigger",
+            "direction": "in",
+            "queueName": "hazard-rate-input-messages",
+            "connection": "hazardratecalculat132383_STORAGE"
+        }
+    ]
+}

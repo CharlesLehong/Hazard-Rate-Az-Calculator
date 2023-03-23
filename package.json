@@ -1,0 +1,19 @@
+{
+  "name": "azfunc",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "@azure/identity": "^3.1.3",
+    "@azure/storage-blob": "^12.13.0",
+    "@azure/storage-queue": "^12.12.0",
+    "@turnbuckle/aprs-calculator-services": "^1.0.22",
+    "dotenv": "^16.0.3",
+    "install": "^0.13.0",
+    "npm": "^9.6.2",
+    "uuid": "^9.0.0"
+  }
+}
