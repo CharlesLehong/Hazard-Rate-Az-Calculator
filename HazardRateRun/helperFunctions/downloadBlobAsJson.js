@@ -1,13 +1,8 @@
 const { BlobServiceClient } = require("@azure/storage-blob");
 const convertStreamToBuffer = require("./convertStreamToBuffer");
-module.exports = async function (
-    accountName,
-    accountKey,
-    containerName,
-    fileName
-) {
+module.exports = async function (connectionString, containerName, fileName) {
     const blobServiceClient = await BlobServiceClient.fromConnectionString(
-        `DefaultEndpointsProtocol=https;AccountName=${accountName};AccountKey=${accountKey};EndpointSuffix=core.windows.net`
+        connectionString
     );
     const containerClient = await blobServiceClient.getContainerClient(
         containerName

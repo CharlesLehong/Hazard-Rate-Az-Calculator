@@ -9,10 +9,10 @@ const {
 module.exports = async function (context, queueMessageItem) {
     const accountName = process.env.STORAGE_ACCOUNT_NAME;
     const accountKey = process.env.STORAGE_ACCOUNT_KEY;
+    const connectionString = `DefaultEndpointsProtocol=https;AccountName=${accountName};AccountKey=${accountKey};EndpointSuffix=core.windows.net`;
 
     const input = await downloadBlobAsJson(
-        accountName,
-        accountKey,
+        connectionString,
         queueMessageItem.inputContainerName,
         queueMessageItem.inputFileName
     );
@@ -24,16 +24,14 @@ module.exports = async function (context, queueMessageItem) {
     const outputFileName = `${context.bindingData.id}.json`;
 
     await createBlobFromText(
-        accountName,
-        accountKey,
+        connectionString,
         queueMessageItem.outputContainerName,
         outputFileName,
         JSON.stringify(output)
     );
 
     await sendMessageToOutputQueue(
-        accountName,
-        accountKey,
+        connectionString,
         queueMessageItem.outputQueueName,
         JSON.stringify({
             outputFileName: outputFileName,

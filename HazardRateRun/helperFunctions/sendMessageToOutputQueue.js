@@ -1,13 +1,7 @@
 const { QueueServiceClient } = require("@azure/storage-queue");
-module.exports = async function (
-    accountName,
-    accountKey,
-    queueName,
-    messageText
-) {
-    const queueServiceClient = QueueServiceClient.fromConnectionString(
-        `DefaultEndpointsProtocol=https;AccountName=${accountName};AccountKey=${accountKey};EndpointSuffix=core.windows.net`
-    );
+module.exports = async function (connectionString, queueName, messageText) {
+    const queueServiceClient =
+        QueueServiceClient.fromConnectionString(connectionString);
     const queueClient = queueServiceClient.getQueueClient(queueName);
     await queueClient.sendMessage(messageText);
 };
